@@ -1,106 +1,134 @@
-# Lab: Form Storage
+# Persistent Form Data Application
+## Description
 
-## Overview  
-Now that we’ve covered the basics of creating custom hooks, let’s use our skills to implement a popular feature when it comes to user convenience. You are working with a repair company and you want the user to be able to keep the inputted form data between refreshes. They don’t want to store it within a `db.json` file as that is less secure, however, we can use the user's local storage to store the data and create a custom hook in order to manipulate the local storage.
+This React application allows users to input and persist form data using the browser’s local storage.
+The application demonstrates how to:
 
-## Task 1: Define the Problem  
-As a user, one should be able to:
-- Input data in the form.
-- Refresh the page.
-- See the form store the data.
+* Create and use a custom React hook
 
-## Task 2: Determine the Design  
-- Build a custom hook that will manipulate local storage.
+* Persist user input after page refreshes
 
-## Task 3: Develop the Code  
-- Create a custom hook, `useLocalStorage`, to manipulate the local storage of the user.
-- Connect the custom hook to the form to persist user data upon refresh.
+* Use localStorage with React hooks
 
-## Task 4: Test and Refine  
-- Debug and test during development using the provided test suite and React DevTools in Chrome.
+* Manage controlled form inputs
 
-## Task 5: Document and Maintain  
-- Commit as you go, writing meaningful commit messages.
-- Push commit history to GitHub periodically and when the lab is complete.
+* Reuse stateful logic across components
 
----
+Users can:
 
-## Tools and Resources  
-- **React Custom Hooks:** [React Docs](https://react.dev/learn/reusing-logic-with-custom-hooks)  
-- **localStorage:** [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)  
+* Enter their name
 
----
+* Enter a service number
 
-## Instructions  
+* Refresh the page
 
-### Set Up  
-Before we begin coding, let's complete the initial setup for this lesson:
+* See their previously entered data remain in the form
 
-#### Fork and Clone  
-1. Go to the provided GitHub repository link.
-2. Fork the repository to your GitHub account.
-3. Clone the forked repository to your local machine.
-4. Open the project in VSCode.
-5. Run `npm install` to install all necessary dependencies.
+## Features
 
-### Task 1: Define the Problem  
-As a user, one should be able to:
-- Input data in the form.
-- Refresh the page.
-- See the form store the data.
+* Controlled form inputs
 
-### Task 2: Determine the Design  
-- Build a custom hook that will manipulate local storage.
+* Persistent data using localStorage
 
-### Task 3: Develop, Test, and Refine the Code  
+* Automatic data restoration after refresh
 
-#### Open React application in the browser  
-```sh
+* Reusable custom hook (useLocalStorage)
+
+* Dynamic UI updates
+
+* React Hooks implementation
+
+### Technologies Used
+
+React
+
+JavaScript (ES6)
+
+React Hooks
+
+localStorage API
+
+CSS
+
+### Project Structure
+
+src/├── components/│   ├── App.jsx│   └── UserForm.jsx├── hooks/│   └── useLocalStorage.jsx├── main.jsx└── index.css
+
+### Installation
+
+1. Clone the Repository
+git clone <repository-url>
+
+2. Navigate into the Project Folder
+cd persistent-form-app
+
+3. Install Dependencies
+npm install
+
+### Running the Application
+
+Start the Development Server
+Vite
 npm run dev
-```
+Create React App
+npm start
 
-#### Run test suite  
-```sh
-npm run test
-```
+### How the Hook Works
 
-#### Create feature branch  
-- **Create custom hook, `useLocalStorage`**
-  - `useLocalStorage` function will have **2 inputs**:
-    - `key`: The name of the input.
-    - `initialValue`: The initial value of the input.
-  - **Create a state** to represent input data:
-    - The initial value of the state is either the localStorage data or `initialValue`.
-    - **Hint:** Use `localStorage.getItem`.
-  - **Return state and setter function.**
-  - **Build `useEffect`** that will update the localStorage of the user:
-    - The dependency array includes both `key` and `state`.
-    - **Hint:** Use `localStorage.setItem` to set values in the local storage.
-- **Connect custom hook to form:**
-  - Connect to the `name` and `serviceNumber` fields of the form.
-  - Ensure the key of each is `"name"` and `"serviceNumber"` respectively.
-- **Push feature branch and open a PR on GitHub.**
-- **Merge to main.**
+1. Retrieve Existing Data
+localStorage.getItem(key)
+Checks if data already exists in storage.
 
-### Task 4: Document and Maintain  
+2. Store Updated Data
+localStorage.setItem(key, value)
+Automatically updates storage whenever input changes.
 
-#### Best Practice Documentation Steps:
-- Add comments to the code to explain purpose and logic.
-- Clarify intent/functionality of code to other developers.
-- Add a screenshot of the completed work in Markdown in `README.md`.
-- Update `README.md` to reflect the functionality of the application following [this guide](https://makeareadme.com).
-- Delete any stale branches on GitHub.
-- Remove unnecessary/commented-out code.
-- If needed, update `.gitignore` to remove sensitive data.
+### Display Image
 
----
+src\assets\Screenshot 2026-05-15 173402.png
 
-## Submission  
-Once all tests are passing and working code is pushed to the GitHub `main` branch, submit your GitHub repo through Canvas using CodeGrade.
+### Benefits of Using a Custom Hook
 
-## Grading Criteria  
-The application passes all test suites.
+Reusable across components
 
-Ensure the application:
-- **Persists user data between refreshes.**
-- **Has a functional custom hook (`useLocalStorage`).**
+Cleaner code organization
+
+Avoids duplicated logic
+
+Simplifies localStorage handling
+
+#### Testing
+
+The application includes tests for:
+
+Initial hook values
+
+State updates
+
+localStorage persistence
+
+Form functionality
+
+* Run tests using:
+* npm test
+or:
+* npm run test
+
+### Future Improvements
+
+* Form validation
+
+* Multiple saved users
+
+* Clear form/reset button
+
+* Dark mode
+
+* Session expiration
+
+* Backend integration
+
+#### Author
+Ruth Wanja Juma
+
+Created as a React Custom Hooks and localStorage practice project.
