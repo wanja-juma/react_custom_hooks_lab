@@ -1,56 +1,69 @@
-import React from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
-import useLocalStorage
-  from "../hooks/useLocalStorage";
-
-function UserForm() {
+function Form() {
 
   /*
     Store name in localStorage
-    using key "name"
   */
   const [name, setName] =
     useLocalStorage("name", "");
 
   /*
     Store service number in localStorage
-    using key "serviceNumber"
   */
   const [serviceNumber, setServiceNumber] =
-    useLocalStorage(
-      "serviceNumber",
-      ""
-    );
+    useLocalStorage("serviceNumber", "");
 
   return (
-    <form>
+    <>
 
-      <h2>User Form</h2>
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
 
-      {/* Name Input */}
-      <input
-        data-testid="name"
-        type="text"
-        placeholder="Enter name"
-        value={name}
-        onChange={(e) =>
-          setName(e.target.value)
-        }
-      />
+        {/* Name Input */}
+        <label htmlFor="name">
+          Name:
+        </label>
 
-      {/* Service Number Input */}
-      <input
-        data-testid="serviceNumber"
-        type="text"
-        placeholder="Enter service number"
-        value={serviceNumber}
-        onChange={(e) =>
-          setServiceNumber(e.target.value)
-        }
-      />
+        <input
+          id="name"
+          type="text"
+          data-testid="name"
+          value={name}
+          onChange={(e) =>
+            setName(e.target.value)
+          }
+        />
 
-    </form>
+        {/* Service Number Input */}
+        <label htmlFor="service">
+          Service Number:
+        </label>
+
+        <input
+          id="service"
+          type="text"
+          data-testid="service"
+          value={serviceNumber}
+          onChange={(e) =>
+            setServiceNumber(e.target.value)
+          }
+        />
+
+      </form>
+
+      <h4>
+        {name
+          ? `Welcome, ${name}!`
+          : "Enter your name"}
+      </h4>
+
+    </>
   );
 }
 
-export default UserForm;
+export default Form;
