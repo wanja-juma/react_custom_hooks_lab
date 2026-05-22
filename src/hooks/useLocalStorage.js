@@ -1,42 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function useLocalStorage(
-  key,
-  initialValue = null
-) {
-
-  /*
-    Initialize state using
-    localStorage value
-    or fallback initialValue
-  */
+export default function useLocalStorage(key, initialValue = null) {
   const [value, setValue] = useState(() => {
-
-    const storedValue =
-      localStorage.getItem(key);
-
-    return storedValue !== null
-      ? storedValue
-      : initialValue;
+    const storedValue = localStorage.getItem(key);
+    return storedValue !== null ? storedValue : initialValue;
   });
 
-  /*
-    Save updated value
-    into localStorage
-  */
-  useEffect(() => {
+  const setStoredValue = (newValue) => {
+    setValue(newValue);
+    localStorage.setItem(key, newValue);
+  };
 
-    localStorage.setItem(
-      key,
-      value
-    );
-
-  }, [key, value]);
-
-  /*
-    Return state and setter
-  */
-  return [value, setValue];
+  return [value, setStoredValue];
 }
-
 
