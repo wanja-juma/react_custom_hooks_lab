@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useLocalStorage(
+export default function useLocalStorage(
   key,
   initialValue = null
 ) {
@@ -39,4 +39,4 @@ function useLocalStorage(
   return [value, setValue];
 }
 
-export default useLocalStorage;
+
