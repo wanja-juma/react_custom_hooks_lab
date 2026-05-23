@@ -1,5 +1,5 @@
 import { fireEvent,render,renderHook, act } from "@testing-library/react";
-import useLocalStorage from "../../hooks/useLocalStorage.js";
+import { useLocalStorage } from "../../hooks/useLocalStorage.js";
 import App from "../../components/App.jsx";
 
 
